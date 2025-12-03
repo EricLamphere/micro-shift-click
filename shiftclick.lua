@@ -1,4 +1,4 @@
-VERSION = "1.0.0"
+VERSION = "0.1.0"
 
 local micro = import("micro")
 local config = import("micro/config")
