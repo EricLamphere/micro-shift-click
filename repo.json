@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "shiftclick",
+    "Description": "VSCode-style shift-click text selection for Micro editor",
+    "Website": "https://github.com/EricLamphere/micro-shift-click",
+    "Tags": ["selection", "mouse", "ui"],
+    "Versions": [
+      {
+        "Version": "1.0.0",
+        "Url": "https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v1.0.0.tar.gz",
+        "Require": {
+          "micro": ">=2.0.14"
+        }
+      }
+    ]
+  }
+]

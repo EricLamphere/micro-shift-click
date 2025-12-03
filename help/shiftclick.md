@@ -10,6 +10,27 @@ Enables VSCode-style shift-click text selection in the Micro editor.
 
 ## Installation
 
+### Install the Plugin
+
+**Using Plugin Manager (Recommended):**
+
+1. Add to `~/.config/micro/settings.json`:
+   ```json
+   {
+       "pluginrepos": [
+           "https://raw.githubusercontent.com/EricLamphere/micro-shift-click/main/repo.json"
+       ]
+   }
+   ```
+
+2. Run: `micro -plugin install shiftclick`
+
+**Manual Installation:**
+
+Copy `shiftclick.lua` and `help/` to `~/.config/micro/plug/shiftclick/`
+
+### Configure Bindings
+
 Add these bindings to `~/.config/micro/bindings.json`:
 
 ```json
