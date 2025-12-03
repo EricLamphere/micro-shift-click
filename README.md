@@ -118,6 +118,74 @@ The solution is to use bindings that distinguish `MouseLeft` from `Shift-MouseLe
 - **Platform**: All platforms supported by Micro
 - **Terminal**: Works in any terminal that properly forwards Shift+mouse events
 
+## Creating a New Release
+
+Follow these steps when releasing a new version of the plugin:
+
+### 1. Update Version Numbers
+
+Update the version in `shiftclick.lua`:
+```lua
+VERSION = "1.1.0"  // Change to your new version
+```
+
+### 2. Update repo.json
+
+Add a new version entry to the `Versions` array in `repo.json`:
+```json
+{
+  "Name": "shiftclick",
+  "Description": "VSCode-style shift-click text selection for Micro editor",
+  "Website": "https://github.com/EricLamphere/micro-shift-click",
+  "Tags": ["selection", "mouse", "ui"],
+  "Versions": [
+    {
+      "Version": "1.1.0",
+      "Url": "https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v1.1.0.tar.gz",
+      "Require": {
+        "micro": ">=2.0.14"
+      }
+    },
+    {
+      "Version": "1.0.0",
+      "Url": "https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v1.0.0.tar.gz",
+      "Require": {
+        "micro": ">=2.0.14"
+      }
+    }
+  ]
+}
+```
+
+**Note**: Add new versions at the top of the array. The plugin manager uses the first entry as the latest version.
+
+### 3. Commit Changes
+
+```bash
+git add shiftclick.lua repo.json
+git commit -m "Bump version to 1.1.0"
+```
+
+### 4. Create and Push Git Tag
+
+```bash
+# Create annotated tag
+git tag -a v1.1.0 -m "Release v1.1.0 - [brief description of changes]"
+
+# Push commit and tag
+git push origin main
+git push origin v1.1.0
+```
+
+### 5. Verify Release
+
+Check that these URLs are accessible:
+- Tag: `https://github.com/EricLamphere/micro-shift-click/releases/tag/v1.1.0`
+- Tarball: `https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v1.1.0.tar.gz`
+- Repo file: `https://raw.githubusercontent.com/EricLamphere/micro-shift-click/main/repo.json`
+
+Users can now update by running: `micro -plugin update shiftclick`
+
 ## Version
 
 1.0.0
