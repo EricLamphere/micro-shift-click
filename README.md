@@ -126,7 +126,7 @@ Follow these steps when releasing a new version of the plugin:
 
 Update the version in `shiftclick.lua`:
 ```lua
-VERSION = "1.1.0"  // Change to your new version
+VERSION = "0.2.0"  // Change to your new version
 ```
 
 ### 2. Update repo.json
@@ -140,15 +140,15 @@ Add a new version entry to the `Versions` array in `repo.json`:
   "Tags": ["selection", "mouse", "ui"],
   "Versions": [
     {
-      "Version": "1.1.0",
-      "Url": "https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v1.1.0.tar.gz",
+      "Version": "0.2.0",
+      "Url": "https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v0.2.0.zip",
       "Require": {
         "micro": ">=2.0.14"
       }
     },
     {
-      "Version": "1.0.0",
-      "Url": "https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v1.0.0.tar.gz",
+      "Version": "0.1.0",
+      "Url": "https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v0.1.0.zip",
       "Require": {
         "micro": ">=2.0.14"
       }
@@ -157,35 +157,49 @@ Add a new version entry to the `Versions` array in `repo.json`:
 }
 ```
 
-**Note**: Add new versions at the top of the array. The plugin manager uses the first entry as the latest version.
+**Note**: Add new versions at the top of the array. The plugin manager uses the first entry as the latest version. Use `.zip` URLs instead of `.tar.gz` for compatibility with Micro's plugin manager.
 
 ### 3. Commit Changes
 
 ```bash
 git add shiftclick.lua repo.json
-git commit -m "Bump version to 1.1.0"
+git commit -m "Bump version to 0.2.0"
 ```
 
 ### 4. Create and Push Git Tag
 
 ```bash
 # Create annotated tag
-git tag -a v1.1.0 -m "Release v1.1.0 - [brief description of changes]"
+git tag -a v0.2.0 -m "Release v0.2.0 - [brief description of changes]"
 
 # Push commit and tag
 git push origin main
-git push origin v1.1.0
+git push origin v0.2.0
 ```
 
-### 5. Verify Release
+### 5. Create Release Zip File (Optional)
+
+GitHub automatically creates zip and tarball archives for each tag. However, if you need to create a custom zip file:
+
+```bash
+# Create a zip file of the plugin directory
+zip -r micro-shift-click-0.2.0.zip shiftclick.lua help/ repo.json README.md -x "*.git*"
+
+# Or create from the git repository
+git archive -o micro-shift-click-0.2.0.zip --prefix=shiftclick/ v0.2.0
+```
+
+**Note**: The Micro plugin manager works with GitHub's automatic archive URLs (as shown in repo.json), so creating a custom zip is typically not necessary.
+
+### 6. Verify Release
 
 Check that these URLs are accessible:
-- Tag: `https://github.com/EricLamphere/micro-shift-click/releases/tag/v1.1.0`
-- Tarball: `https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v1.1.0.tar.gz`
+- Tag: `https://github.com/EricLamphere/micro-shift-click/releases/tag/v0.2.0`
+- Zip archive: `https://github.com/EricLamphere/micro-shift-click/archive/refs/tags/v0.2.0.zip`
 - Repo file: `https://raw.githubusercontent.com/EricLamphere/micro-shift-click/main/repo.json`
 
 Users can now update by running: `micro -plugin update shiftclick`
 
 ## Version
 
-1.0.0
+0.1.0
