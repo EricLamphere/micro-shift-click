@@ -8,6 +8,7 @@ Enables VSCode-style shift-click text selection in the Micro editor.
 - **Shift-click** to select from anchor to the new position
 - **Multiple shift-clicks** extend selection from the original anchor
 - **Per-buffer anchors** - each open file maintains its own anchor independently
+- **Double, triple, and quadruple click highlighting** - Highlights the word, line, or full page, respectively
 
 ## Installation
 
